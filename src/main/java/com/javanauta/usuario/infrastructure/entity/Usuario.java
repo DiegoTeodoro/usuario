@@ -1,4 +1,4 @@
-package com.javanauta.aprendendo_spring.infrastructure.entity;
+package com.javanauta.usuario.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
+@Builder
 @Table(name = "usuario")
 public class Usuario implements UserDetails {
 
@@ -33,12 +34,12 @@ public class Usuario implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="usuario_id", referencedColumnName = "id")
-    private List<Endereco> enderecos = new ArrayList<>();
-
+    
+	private List<Endereco> enderecos = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="usuario_id", referencedColumnName = "id")
-    private List<Telefone> telefones = new ArrayList<>();
-
+   
+	private List<Telefone> telefones = new ArrayList<>();
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

@@ -1,4 +1,4 @@
-package com.javanauta.aprendendo_spring.infrastructure.entity;
+package com.javanauta.usuario.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Entity
+@Builder
 @Table(name = "endereco")
 public class Endereco {
 
