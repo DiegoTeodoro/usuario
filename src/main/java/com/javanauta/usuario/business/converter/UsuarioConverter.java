@@ -18,8 +18,8 @@ public class UsuarioConverter {
                 .nome(usuarioDTO.getNome())
                 .email(usuarioDTO.getEmail())
                 .senha(usuarioDTO.getSenha())
-                .enderecos(paraListaEndereco(usuarioDTO.getEndereco()))
-                .telefones(paraListaTelefones(usuarioDTO.getTelefone()))
+                .enderecos(paraListaEndereco(usuarioDTO.getEnderecos()))
+                .telefones(paraListaTelefones(usuarioDTO.getTelefones()))
                 .build();
 
     }
@@ -55,8 +55,8 @@ public class UsuarioConverter {
                 .nome(usuarioDTO.getNome())
                 .email(usuarioDTO.getEmail())
                 .senha(usuarioDTO.getSenha())
-                .endereco(paraListaEnderecoDTO(usuarioDTO.getEnderecos()))
-                .telefone(paraListaTelefonesDTO(usuarioDTO.getTelefones()))
+                .enderecos(paraListaEnderecoDTO(usuarioDTO.getEnderecos()))
+                .telefones(paraListaTelefonesDTO(usuarioDTO.getTelefones()))
                 .build();
 
     }
@@ -86,5 +86,17 @@ public class UsuarioConverter {
                 .numero(telefoneDTO.getNumero())
                 .build();
     }
+
+    public Usuario updateUsuario(UsuarioDTO dto, Usuario entity) {
+        return Usuario.builder()
+                .id(entity.getId())
+                .nome(dto.getNome() != null ? dto.getNome() : entity.getNome())
+                .email(dto.getEmail() != null ? dto.getEmail() : entity.getEmail())   // <-- importante
+                .senha(dto.getSenha() != null ? dto.getSenha() : entity.getSenha())
+                .enderecos(dto.getEnderecos() != null ? paraListaEndereco(dto.getEnderecos()) : entity.getEnderecos())
+                .telefones(dto.getTelefones() != null ? paraListaTelefones(dto.getTelefones()) : entity.getTelefones())
+                .build();
+    }
+
 
 }
