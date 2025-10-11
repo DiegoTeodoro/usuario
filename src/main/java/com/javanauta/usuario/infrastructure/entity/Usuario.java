@@ -34,11 +34,10 @@ public class Usuario implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="usuario_id", referencedColumnName = "id")
-    
 	private List<Endereco> enderecos = new ArrayList<>();
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="usuario_id", referencedColumnName = "id")
-   
 	private List<Telefone> telefones = new ArrayList<>();
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
